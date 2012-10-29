@@ -1,4 +1,7 @@
-# desc "Explaining what the task does"
-# task :ken_all do
-#   # Task goes here
-# end
+namespace :ken_all do
+  desc "Download & Import KEN_ALL"
+  task :import => :environment do
+    import = KenAll::Import.new
+    import.run
+  end
+end
