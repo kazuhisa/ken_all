@@ -18,3 +18,7 @@ gem "jquery-rails"
 gem 'rspec-rails'
 gem 'zipruby'
 gem 'activerecord-import'
+
+group :test do
+  gem 'rr', "~> 1.0.0"
+end
