@@ -9,4 +9,13 @@ namespace :ken_all do
     import = KenAll::Import.new
     import.run
   end
+
+  namespace :import do
+    desc "Silent Download & Import KEN_ALL"
+    task :silent => :environment do
+      import = KenAll::Import.new(visualize: false)
+      import.run
+    end
+  end
+
 end

@@ -2,11 +2,14 @@
 
 module KenAll
   class Import
-    include KenAll::Visualizer
     URI = "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
 
+    def initialize(opt = {visualize: true})
+      @visualizer = KenAll::Visualizer.new(opt[:visualize])
+    end
+
     def run
-      screen_init do
+      @visualizer.screen_init do
         Tempfile.open("ken_all.zip") do |f|
           download_file(f)
           csv = zip_to_csv(f)
@@ -16,7 +19,7 @@ module KenAll
     end
 
     def download_file(file)
-      download_status do
+      @visualizer.download_status do
         file.binmode
         open(URI, 'rb') do |read_file|
           file.write(read_file.read)
@@ -27,7 +30,7 @@ module KenAll
 
     def zip_to_csv(zip_file)
       csv = nil
-      unzip_status do
+      @visualizer.unzip_status do
         Zip::Archive.open_buffer(zip_file.read) do |ar|
           ar.fopen(ar.get_name(0)) do |file|
             csv = CSV.parse(file.read.encode("utf-8","sjis"))
@@ -38,7 +41,7 @@ module KenAll
     end
 
     def import_model(csv)
-      import_status do
+      @visualizer.import_status do
         ActiveRecord::Base.transaction do
           header = [:code, :address1, :address2, :address3, :address_kana1, :address_kana2, :address_kana3]
           list = []

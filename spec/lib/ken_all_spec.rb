@@ -2,10 +2,7 @@
 require 'spec_helper'
 
 describe KenAll::Import do
-  let(:obj){KenAll::Import.new}
-  before do
-    stub(Curses).refresh{nil}
-  end
+  let(:obj){KenAll::Import.new(:visualize => false)}
   describe :run do
     before do
       mock(obj).download_file(anything){nil}
