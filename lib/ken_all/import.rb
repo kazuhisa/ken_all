@@ -8,7 +8,7 @@ module KenAll
       @visualizer = KenAll::Visualizer.new(opt[:visualize])
     end
 
-    def run
+    def from_net
       @visualizer.screen_init do
         Tempfile.open("ken_all.zip") do |f|
           download_file(f)

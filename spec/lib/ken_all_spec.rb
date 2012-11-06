@@ -10,7 +10,7 @@ describe KenAll::Import do
       mock(obj).import_model(anything){nil}
     end
     it "メソッドが実行できること" do
-      obj.run
+      obj.from_net
     end
   end
 
