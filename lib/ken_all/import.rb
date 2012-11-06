@@ -18,6 +18,17 @@ module KenAll
       end
     end
 
+    def from_file
+      if ENV["FILE"].present?
+        CSV.open(ENV["FILE"],:encoding => "Shift_JIS:UTF-8") do |csv|
+          import_model(csv)
+        end
+      else
+        puts "Specify FILE arguments."
+        puts "rake ken_all:import:file FILE=/path/to/x-ken-all.csv"
+      end
+    end
+
     def download_file(file)
       @visualizer.download_status do
         file.binmode

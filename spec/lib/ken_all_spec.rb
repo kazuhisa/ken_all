@@ -3,16 +3,6 @@ require 'spec_helper'
 
 describe KenAll::Import do
   let(:obj){KenAll::Import.new(:visualize => false)}
-  describe :run do
-    before do
-      mock(obj).download_file(anything){nil}
-      mock(obj).zip_to_csv(anything){nil}
-      mock(obj).import_model(anything){nil}
-    end
-    it "メソッドが実行できること" do
-      obj.from_net
-    end
-  end
 
   describe :import_model do
     let(:csv) do

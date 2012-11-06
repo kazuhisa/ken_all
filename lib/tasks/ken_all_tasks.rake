@@ -17,11 +17,11 @@ namespace :ken_all do
       import.from_net
     end
 
-    #desc "Import from file"
-    #task :file => :environment do
-    #  import = KenAll::Import.new(visualize: false)
-    #  import.run
-    #end
+    desc "Import from file"
+    task :file => :environment do
+      import = KenAll::Import.new(visualize: false)
+      import.from_file
+    end
   end
 
 end
