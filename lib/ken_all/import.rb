@@ -72,8 +72,8 @@ module KenAll
               list << post.to_array
             end
           end
-          PostalCode.delete_all
-          PostalCode.import(header, list)
+          KenAll::PostalCode.delete_all
+          KenAll::PostalCode.import(header, list)
         end
       end
     end
