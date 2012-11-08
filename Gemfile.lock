@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ken_all (0.1.2)
+    ken_all (0.1.3)
       activerecord-import
       rails (>= 3.0.9)
       zipruby
