@@ -1,3 +1,34 @@
-= KenAll
+= ken_all
 
-This project rocks and uses MIT-LICENSE.
+半分ジョーク、半分マジなrails用郵便番号データ活用ツールです
+
+== How to use.
+ 
+(1) Gemfileに追加
+  gem "ken_all"
+
+(2) 使い方
+  $ rake ken_all:install:migrations #migrationファイルをプロジェクトに作成
+  $ rake db:migrate #テーブルの作成
+  $ rake ken_all:import #郵便番号の取込
+
+(3) 郵便番号について
+  郵便番号は日本郵便のページ(http://www.japanpost.jp)からダウンロードされます。
+  そのままでは使いにくいので次の処理を行なっています。
+  ・address3に「以下に掲載がない場合」が設定されている場合は空文字列に置換します。
+  ・address3に「境町の次に番地がくる場合」が設定されている場合は空文字列に置換します。
+  ・address3に「〜一円」が設定されている場合は空文字列に置換します。ただし、一円という地名は除きます。
+  ・複数行にまたがる場合は1レコードに集約します。
+
+  zip cloudさん(http://zipcloud.ibsnet.co.jp)と同等の処理をしたかったのですが、ちょっと手が届きませんでした。
+
+(3) Options
+  $ rake ken_all:import:silent #静かに取込を行います
+  $ rake ken_all:import:file FILE=/path/to/x-ken-all.csv #外部のファイルから取り込みます(*)
+
+  * zip cloudさん(http://zipcloud.ibsnet.co.jp)の加工済みバージョンを利用すると良いです
+
+== Copyright
+
+Copyright (c) 2012 Yamamoto Kazuhisa. See MIT-LICENSE for
+further details.
