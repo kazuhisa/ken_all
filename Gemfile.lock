@@ -3,7 +3,7 @@ PATH
   specs:
     ken_all (0.1.2)
       activerecord-import
-      rails (~> 3.2.8)
+      rails (>= 3.0.9)
       zipruby
 
 GEM
