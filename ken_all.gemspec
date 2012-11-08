@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["ak.hisashi@gmail.com"]
   s.homepage    = "https://github.com/kazuhisa/ken_all"
   s.summary     = "Japanese postal code tools."
-  s.description = "Easy setup and install for rails."
+  s.description = "Japanese postal code tools."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
