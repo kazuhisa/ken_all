@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ken_all (0.0.1)
+    ken_all (0.1.0)
       rails (~> 3.2.8)
 
 GEM
@@ -104,7 +104,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.34)
+    tzinfo (0.3.35)
     zipruby (0.3.6)
 
 PLATFORMS

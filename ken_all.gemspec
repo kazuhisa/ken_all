@@ -7,11 +7,11 @@ require "ken_all/version"
 Gem::Specification.new do |s|
   s.name        = "ken_all"
   s.version     = KenAll::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of KenAll."
-  s.description = "TODO: Description of KenAll."
+  s.authors     = ["Yamamoto Kazuhisa"]
+  s.email       = ["ak.hisashi@gmail.com"]
+  s.homepage    = "https://github.com/kazuhisa/ken_all"
+  s.summary     = "Japanese postal code tools."
+  s.description = "Easy setup and install for rails."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
