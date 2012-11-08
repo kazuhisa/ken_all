@@ -12,6 +12,8 @@
   $ rake db:migrate #テーブルの作成
   $ rake ken_all:import #郵便番号の取込
 
+  取り込んだデータはKenAll::PostalCodeで使用することができます。
+
 (3) 郵便番号について
   郵便番号は日本郵便のページ(http://www.japanpost.jp)からダウンロードされます。
   そのままでは使いにくいので次の処理を行なっています。
