@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc","Gemfile","Gemfile.lock"]
 
-  s.add_dependency "rails", ">= 3.0.9"
-  s.add_dependency "zipruby",">= 0"
   s.add_dependency "activerecord-import","~> 0.2.11"
+  s.add_dependency "zipruby",">= 0"
+  s.add_dependency "rails", ">= 3.0.9"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
