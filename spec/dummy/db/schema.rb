@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028094049) do
+ActiveRecord::Schema.define(:version => 20130722113003) do
 
   create_table "ken_all_postal_codes", :force => true do |t|
     t.string   "code"
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "address3"
-    t.string   "address_kana1"
-    t.string   "address_kana2"
-    t.string   "address_kana3"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.text     "address1",      :limit => 255
+    t.text     "address2",      :limit => 255
+    t.text     "address3",      :limit => 255
+    t.text     "address_kana1", :limit => 255
+    t.text     "address_kana2", :limit => 255
+    t.text     "address_kana3", :limit => 255
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
 end

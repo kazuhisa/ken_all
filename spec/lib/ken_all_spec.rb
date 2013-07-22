@@ -70,4 +70,14 @@ EOS
       end
     end
   end
+
+  context 'スキーマ情報が古い場合' do
+    before do
+      stub(column = Object.new).sql_type{'varchar(255)'}
+      stub(KenAll::PostalCode.columns).select{[column]}
+    end
+    it '例外が発生すること' do
+      expect {KenAll::Import.new}.to raise_error
+    end
+  end
 end
