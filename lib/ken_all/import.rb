@@ -1,11 +1,24 @@
 # coding: utf-8
 
 module KenAll
+  class OldSchemaException < StandardError
+  end
+
   class Import
     URI = "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
 
     def initialize(opt = {visualize: true})
       @visualizer = KenAll::Visualizer.new(opt[:visualize])
+      if old_schema?
+        error = <<EOS
+KenAll Error.
+This project is using old schema information.
+Type First.
+$ rake ken_all:install:migrations
+$ rake db:migrate
+EOS
+        raise KenAll::OldSchemaException.new(error)
+      end
     end
 
     def from_net
@@ -76,6 +89,11 @@ module KenAll
           KenAll::PostalCode.import(header, list)
         end
       end
+    end
+
+    def old_schema?
+      column = KenAll::PostalCode.columns.select{|v| v.name == 'address1'}.first
+      column.sql_type != 'text'
     end
   end
 end
