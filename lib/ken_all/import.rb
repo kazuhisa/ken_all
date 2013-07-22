@@ -93,7 +93,7 @@ EOS
 
     def old_schema?
       column = KenAll::PostalCode.columns.select{|v| v.name == 'address1'}.first
-      column.sql_type != 'text'
+      !(column.sql_type =~ /text/)
     end
   end
 end
