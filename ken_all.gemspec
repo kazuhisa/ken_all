@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/kazuhisa/ken_all"
   s.summary     = "Japanese postal code tools."
   s.description = "Japanese postal code tools."
+  s.license       = 'MIT'
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc","Gemfile","Gemfile.lock"]
 
