@@ -3,7 +3,7 @@
 module KenAll
   class Post
     NOT_FOUND = /^以下に掲載がない場合$/
-    NEXT_ADDRESS = /^境町の次に番地がくる場合$/
+    NEXT_ADDRESS = /^.+の次に番地がくる場合$/
     WHOLE_PLACE = /.+一円$/
 
     attr_accessor :code, :address1, :address2, :address3, :address_kana1, :address_kana2, :address_kana3

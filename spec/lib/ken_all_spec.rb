@@ -33,7 +33,7 @@ EOS
         record.address_kana3.should == ""
       end
     end
-    context "境町の次に番地がくる場合" do
+    context "の次に番地がくる場合" do
       let(:record){KenAll::PostalCode.find_by_code("3060433")}
       it "address3に空文字列がセットされていること" do
         record.address3.should == ""
