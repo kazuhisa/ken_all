@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'open-uri'
 require 'tempfile'
-require 'zipruby'
 require 'csv'
 require 'curses'
 require 'activerecord-import'

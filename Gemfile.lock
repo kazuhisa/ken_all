@@ -4,7 +4,6 @@ PATH
     ken_all (0.1.9)
       activerecord-import (~> 0.4)
       rails (>= 3.0.9)
-      zipruby
 
 GEM
   remote: http://rubygems.org/
@@ -104,7 +103,6 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    zipruby (0.3.6)
 
 PLATFORMS
   ruby
@@ -117,4 +115,3 @@ DEPENDENCIES
   rr (~> 1.0.0)
   rspec-rails
   sqlite3
-  zipruby
