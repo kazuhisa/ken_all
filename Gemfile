@@ -15,7 +15,6 @@ gem "jquery-rails"
 
 # To use debugger
 # gem 'debugger'
-gem 'zipruby'
 gem 'activerecord-import'
 
 group :test do

@@ -55,13 +55,28 @@ EOS
     def zip_to_csv(zip_file)
       csv = nil
       @visualizer.unzip_status do
-        Zip::Archive.open_buffer(zip_file.read) do |ar|
-          ar.fopen(ar.get_name(0)) do |file|
-            csv = CSV.parse(file.read.encode("utf-8","sjis"))
+        if defined? Zip::Archive # zipruby
+          Zip::Archive.open_buffer(zip_file.read) do |ar|
+            ar.fopen(ar.get_name(0)) do |file|
+              csv = CSV.parse(file.read.encode("utf-8","sjis"))
+            end
           end
+        elsif defined?(Zip::File) || defined?(Zip::ZipFile) # rubyzip
+          csv = rubyzip_read_csv(zip_file)
+        else
+          raise %Q{Zip library is not found!\nPlease add "gem 'zipruby'" or "gem 'rubyzip'" to your Gemfile.}
         end
       end
       csv
+    end
+
+    def rubyzip_read_csv(zip_file)
+      # Use Zip::File for rubyzip >= 1.0.0, Zip::ZipFile for older.
+      klass = defined?(Zip::File) ? Zip::File : Zip::ZipFile
+      klass.foreach(zip_file) do |entry|
+        File.extname(entry.name).downcase == '.csv' or next
+        return CSV.parse(entry.get_input_stream.read.encode("utf-8", "sjis"))
+      end
     end
 
     def import_model(csv)
