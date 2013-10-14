@@ -15,8 +15,8 @@ gem "jquery-rails"
 
 # To use debugger
 # gem 'debugger'
-gem 'zipruby'
 gem 'activerecord-import'
+gem 'rubyzip'
 
 group :test do
   gem 'rspec-rails'
