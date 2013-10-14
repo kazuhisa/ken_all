@@ -1,8 +1,24 @@
 #coding: utf-8
 require 'spec_helper'
+require 'rake'
+
 
 describe KenAll::Import do
+  before(:all) do
+    load "#{Rails.root}/Rakefile"
+    Rake::Task['db:setup'].invoke
+  end
+
   let(:obj){KenAll::Import.new(:visualize => false)}
+
+  describe 'ZIPファイルからのインポート' do
+    it "正しく取り込まれること" do
+      ENV['FILE'] = File.join(File.dirname(__FILE__), '..', 'import-test.zip')
+      obj.from_file
+      ENV.delete 'FILE'
+      KenAll::PostalCode.scoped.size.should == 7
+    end
+  end
 
   describe :import_model do
     let(:csv) do

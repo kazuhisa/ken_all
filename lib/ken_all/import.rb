@@ -33,8 +33,12 @@ EOS
 
     def from_file
       if ENV["FILE"].present?
-        CSV.open(ENV["FILE"],:encoding => "Shift_JIS:UTF-8") do |csv|
-          import_model(csv)
+        if File.extname(ENV["FILE"]).downcase == '.zip'
+          import_model zip_to_csv(ENV["FILE"])
+        else
+          CSV.open(ENV["FILE"],:encoding => "Shift_JIS:UTF-8") do |csv|
+            import_model(csv)
+          end
         end
       else
         puts "Specify FILE arguments."
@@ -55,10 +59,12 @@ EOS
     def zip_to_csv(zip_file)
       csv = nil
       @visualizer.unzip_status do
-        Zip::Archive.open_buffer(zip_file.read) do |ar|
-          ar.fopen(ar.get_name(0)) do |file|
-            csv = CSV.parse(file.read.encode("utf-8","sjis"))
-          end
+        # Use Zip::File for rubyzip >= 1.0.0, Zip::ZipFile for older.
+        klass = defined?(Zip::File) ? Zip::File : Zip::ZipFile
+        klass.foreach(zip_file) do |entry|
+          File.extname(entry.name).downcase == '.csv' or next
+          csv = CSV.parse(entry.get_input_stream.read.encode("utf-8", "sjis"))
+          break
         end
       end
       csv
