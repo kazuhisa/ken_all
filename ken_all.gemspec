@@ -1,4 +1,5 @@
-$:.push File.expand_path("../lib", __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Maintain your gem's version:
 require "ken_all/version"
@@ -14,11 +15,14 @@ Gem::Specification.new do |s|
   s.description = "Japanese postal code tools."
   s.license       = 'MIT'
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc","Gemfile","Gemfile.lock"]
+  s.files         = `git ls-files`.split($/)
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ['lib']
 
   s.add_dependency "activerecord-import","~> 0.4"
   s.add_dependency "rails", ">= 3.0.9"
-  s.add_dependency "rubyzip"
+  s.add_dependency "rubyzip", '~> 1.0'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

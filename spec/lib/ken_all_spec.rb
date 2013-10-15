@@ -13,7 +13,16 @@ describe KenAll::Import do
 
   describe 'ZIPファイルからのインポート' do
     it "正しく取り込まれること" do
-      ENV['FILE'] = File.join(File.dirname(__FILE__), '..', 'import-test.zip')
+      ENV['FILE'] = File.join(File.dirname(__FILE__), '..', 'files/import-test.zip')
+      obj.from_file
+      ENV.delete 'FILE'
+      KenAll::PostalCode.scoped.size.should == 7
+    end
+  end
+
+  describe 'CSVファイルからのインポート' do
+    it "正しく取り込まれること" do
+      ENV['FILE'] = File.join(File.dirname(__FILE__), '..', 'files/import-test.csv')
       obj.from_file
       ENV.delete 'FILE'
       KenAll::PostalCode.scoped.size.should == 7
