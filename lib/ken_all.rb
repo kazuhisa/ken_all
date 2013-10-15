@@ -1,7 +1,11 @@
 require 'rubygems'
 require 'open-uri'
 require 'tempfile'
-require 'zipruby'
+begin
+  require 'zip' # rubyzip >= 1.0.0
+rescue LoadError
+  require 'zip/zip' # rubyzip < 1.0.0
+end
 require 'csv'
 require 'curses'
 require 'activerecord-import'

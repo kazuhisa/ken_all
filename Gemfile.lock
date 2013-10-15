@@ -4,7 +4,7 @@ PATH
     ken_all (0.1.9)
       activerecord-import (~> 0.4)
       rails (>= 3.0.9)
-      zipruby
+      rubyzip
 
 GEM
   remote: http://rubygems.org/
@@ -92,6 +92,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rubyzip (0.9.9)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -104,7 +105,6 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    zipruby (0.3.6)
 
 PLATFORMS
   ruby
@@ -116,5 +116,5 @@ DEPENDENCIES
   rails (~> 3.2)
   rr (~> 1.0.0)
   rspec-rails
+  rubyzip
   sqlite3
-  zipruby
