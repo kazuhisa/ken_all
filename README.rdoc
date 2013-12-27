@@ -1,5 +1,4 @@
-http://api.travis-ci.org/kazuhisa/ken_all.png
-
+{<img src="http://api.travis-ci.org/kazuhisa/ken_all.png" />}[http://travis-ci.org/kazuhisa/ken_all]
 = ken_all
 
 半分ジョーク、半分マジなrails用郵便番号データ活用ツールです
