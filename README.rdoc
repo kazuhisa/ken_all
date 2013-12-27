@@ -1,3 +1,5 @@
+http://api.travis-ci.org/kazuhisa/ken_all.png
+
 = ken_all
 
 半分ジョーク、半分マジなrails用郵便番号データ活用ツールです
