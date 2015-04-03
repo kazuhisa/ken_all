@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "activerecord-import","~> 0.4"
   s.add_dependency "rails", ">= 3.0.9"
   s.add_dependency "rubyzip", '~> 1.0'
+  s.add_dependency "curses", '~> 1.0'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

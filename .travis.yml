@@ -1,4 +1,9 @@
 language: ruby
 rvm:
-  - 2.0.0-p353
-script: bundle exec rspec
+  - 2.1.5
+before_script:
+  - cd spec/dummy
+  - bundle exec rake db:setup
+  - cd ../..
+script:
+  - bundle exec rspec
