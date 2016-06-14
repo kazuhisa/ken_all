@@ -5,7 +5,10 @@ module KenAll
   end
 
   class Import
-    URI = "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
+    URL = {
+        japanpost: 'http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip',
+        zipcloud: 'http://zipcloud.ibsnet.co.jp/zipcodedata/download?di=1464682240001',
+    }
 
     def initialize(opt = {visualize: true})
       @visualizer = KenAll::Visualizer.new(opt[:visualize])
@@ -21,10 +24,10 @@ EOS
       end
     end
 
-    def from_net
+    def from_net(source)
       @visualizer.screen_init do
         Tempfile.open("ken_all.zip") do |f|
-          download_file(f)
+          download_file(f, source)
           csv = zip_to_csv(f)
           import_model(csv)
         end
@@ -46,10 +49,11 @@ EOS
       end
     end
 
-    def download_file(file)
+    def download_file(file, source)
+      uri = URL[source.to_sym]
       @visualizer.download_status do
         file.binmode
-        open(URI, 'rb') do |read_file|
+        open(uri, 'rb') do |read_file|
           file.write(read_file.read)
         end
         file.rewind

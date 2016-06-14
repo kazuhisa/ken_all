@@ -98,8 +98,8 @@ EOS
 
   context 'スキーマ情報が古い場合' do
     before do
-      stub(column = Object.new).sql_type{'varchar(255)'}
-      stub(KenAll::PostalCode.columns).select{[column]}
+      column = Object.stub(:sql_type).and_return('varchar(255)')
+      KenAll::PostalCode.columns.stub(:select).and_return([column])
     end
     it '例外が発生すること' do
       expect {KenAll::Import.new}.to raise_error
