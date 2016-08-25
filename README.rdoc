@@ -28,7 +28,7 @@
 (3) Options
   $ rake ken_all:import:silent #静かに取込を行います
   $ rake ken_all:import:file FILE=/path/to/x-ken-all.csv #外部のファイルから取り込みます(*)
-  $ rake ken_all:import URI=http://domain/path/to/x-ken-all.csv #外部のサイトからダウンロードして取り込みます(*)
+  $ rake ken_all:import URI=http://domain/path/to/x-ken-all.zip #外部のサイトからzipファイルをダウンロードして取り込みます(*)
 
   * zip cloudさん(http://zipcloud.ibsnet.co.jp)の加工済みバージョンを利用すると良いです
 
