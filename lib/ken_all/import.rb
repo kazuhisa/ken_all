@@ -5,7 +5,7 @@ module KenAll
   end
 
   class Import
-    URI = "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
+    URI = ENV['URI'] || "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
 
     def initialize(opt = {visualize: true})
       @visualizer = KenAll::Visualizer.new(opt[:visualize])
