@@ -1,7 +1,7 @@
 language: ruby
 rvm:
-  - 2.1
   - 2.2
+  - 2.3
 before_script:
   - cd spec/dummy
   - bundle exec rake db:setup
