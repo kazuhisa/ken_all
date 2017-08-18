@@ -5,7 +5,7 @@ PATH
       activerecord-import (~> 0.4)
       curses (~> 1.0)
       rails (>= 3.0.9)
-      rubyzip (~> 1.0)
+      rubyzip (~> 1.2)
 
 GEM
   remote: http://rubygems.org/
