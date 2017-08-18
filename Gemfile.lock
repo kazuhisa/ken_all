@@ -80,7 +80,6 @@ GEM
     rake (12.0.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rr (1.2.1)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -120,7 +119,6 @@ PLATFORMS
 DEPENDENCIES
   ken_all!
   rails (~> 3.2)
-  rr (~> 1.1)
   rspec-rails
   sqlite3
   test-unit (~> 3.0)

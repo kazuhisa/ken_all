@@ -1,7 +1,5 @@
-#coding: utf-8
 require 'spec_helper'
 require 'rake'
-
 
 describe KenAll::Import do
   before(:all) do
@@ -97,9 +95,9 @@ EOS
   end
 
   context 'スキーマ情報が古い場合' do
+    let(:column){ double('Column', sql_type: 'varchar(255)') }
     before do
-      stub(column = Object.new).sql_type{'varchar(255)'}
-      stub(KenAll::PostalCode.columns).select{[column]}
+      allow(KenAll::PostalCode.columns).to receive(:select) { [column] }
     end
     it '例外が発生すること' do
       expect {KenAll::Import.new}.to raise_error
