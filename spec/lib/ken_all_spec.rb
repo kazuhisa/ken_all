@@ -14,7 +14,7 @@ describe KenAll::Import do
       ENV['FILE'] = File.join(File.dirname(__FILE__), '..', 'files/import-test.zip')
       obj.from_file
       ENV.delete 'FILE'
-      KenAll::PostalCode.scoped.size.should == 7
+      expect(KenAll::PostalCode.all.size).to eq 7
     end
   end
 
@@ -23,7 +23,7 @@ describe KenAll::Import do
       ENV['FILE'] = File.join(File.dirname(__FILE__), '..', 'files/import-test.csv')
       obj.from_file
       ENV.delete 'FILE'
-      KenAll::PostalCode.scoped.size.should == 7
+      expect(KenAll::PostalCode.all.size).to eq 7
     end
   end
 
@@ -45,51 +45,51 @@ EOS
       obj.import_model(csv)
     end
     it "正しく取り込まれること" do
-      KenAll::PostalCode.scoped.size.should == 7
+      expect(KenAll::PostalCode.all.size).to eq 7
     end
     context "以下に掲載がない場合" do
       let(:record){KenAll::PostalCode.find_by_code("0600000")}
       it "address3に空文字列がセットされていること" do
-        record.address3.should == ""
+        expect(record.address3).to eq ''
       end
       it "address_kana3に空文字列がセットされていること" do
-        record.address_kana3.should == ""
+        expect(record.address_kana3).to eq ''
       end
     end
     context "の次に番地がくる場合" do
       let(:record){KenAll::PostalCode.find_by_code("3060433")}
       it "address3に空文字列がセットされていること" do
-        record.address3.should == ""
+        expect(record.address3).to eq ''
       end
       it "address_kana3に空文字列がセットされていること" do
-        record.address_kana3.should == ""
+        expect(record.address_kana3).to eq ''
       end
     end
     context "〜一円" do
       let(:record){KenAll::PostalCode.find_by_code("1000301")}
       it "address3に空文字列がセットされていること" do
-        record.address3.should == ""
+        expect(record.address3).to eq ''
       end
       it "address_kana3に空文字列がセットされていること" do
-        record.address_kana3.should == ""
+        expect(record.address_kana3).to eq ''
       end
     end
     context "一円という地名" do
       let(:record){KenAll::PostalCode.find_by_code("5220317")}
       it "address3の修正はされないこと" do
-        record.address3.should == "一円"
+        expect(record.address3).to eq "一円"
       end
       it "address_kana3の修正はされないこと" do
-        record.address_kana3.should == "ｲﾁｴﾝ"
+        expect(record.address_kana3).to eq "ｲﾁｴﾝ"
       end
     end
     context "〒066-0005の住所のマージ" do
       let(:record){KenAll::PostalCode.find_by_code("0660005")}
       it "address3が正しいこと" do
-        record.address3.should == "協和（８８−２、２７１−１０、３４３−２、４０４−１、４２７−３、４３１−１２、４４３−６、６０８−２、６４１−８、８１４、８４２−５、１１３７−３、１３９２、１６５７、１７５２番地）"
+        expect(record.address3).to eq "協和（８８−２、２７１−１０、３４３−２、４０４−１、４２７−３、４３１−１２、４４３−６、６０８−２、６４１−８、８１４、８４２−５、１１３７−３、１３９２、１６５７、１７５２番地）"
       end
       it "address_kana3が正しいこと" do
-        record.address_kana3.should == "ｷｮｳﾜ(88-2､271-10､343-2､404-1､427-3､431-12､443-6､608-2､641-8､814､842-5､1137-3､1392､1657､1752ﾊﾞﾝﾁ)"
+        expect(record.address_kana3).to eq "ｷｮｳﾜ(88-2､271-10､343-2､404-1､427-3､431-12､443-6､608-2､641-8､814､842-5､1137-3､1392､1657､1752ﾊﾞﾝﾁ)"
       end
     end
   end
@@ -100,7 +100,7 @@ EOS
       allow(KenAll::PostalCode.columns).to receive(:select) { [column] }
     end
     it '例外が発生すること' do
-      expect {KenAll::Import.new}.to raise_error
+      expect {KenAll::Import.new}.to raise_error(KenAll::OldSchemaException)
     end
   end
 end
