@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ken_all (0.1.12)
+    ken_all (0.2.0)
       activerecord-import (~> 0.4)
       curses (~> 1.0)
       rails (>= 3.0.9)
@@ -42,7 +42,7 @@ GEM
       activemodel (= 5.2.0)
       activesupport (= 5.2.0)
       arel (>= 9.0)
-    activerecord-import (0.22.0)
+    activerecord-import (0.23.0)
       activerecord (>= 3.2)
     activestorage (5.2.0)
       actionpack (= 5.2.0)
