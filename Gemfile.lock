@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ken_all (0.2.0)
+    ken_all (0.3.0)
       activerecord-import (~> 0.4)
       curses (~> 1.0)
       rails (>= 3.0.9)
