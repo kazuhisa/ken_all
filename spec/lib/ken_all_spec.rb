@@ -97,7 +97,7 @@ EOS
   context 'スキーマ情報が古い場合' do
     let(:column){ double('Column', sql_type: 'varchar(255)') }
     before do
-      allow(KenAll::PostalCode.columns).to receive(:select) { [column] }
+      allow(KenAll::PostalCode.columns).to receive(:find) { column }
     end
     it '例外が発生すること' do
       expect {KenAll::Import.new}.to raise_error(KenAll::OldSchemaException)
