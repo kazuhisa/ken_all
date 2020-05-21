@@ -20,12 +20,12 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency "activerecord-import","~> 0.4"
+  s.add_dependency "activerecord-import",">= 0.4"
   s.add_dependency "rails", ">= 3.0.9"
   s.add_dependency "rubyzip", '>= 1.2'
   s.add_dependency "curses", '~> 1.0'
   s.add_development_dependency 'listen'
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
-  s.add_development_dependency 'rails', '~> 5.2'
+  s.add_development_dependency 'rails', '5.2.4.2'
 end
