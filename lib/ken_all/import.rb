@@ -5,7 +5,7 @@ module KenAll
   end
 
   class Import
-    URI = "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
+    FILE_URI = "http://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
 
     def initialize(opt = { visualize: true })
       @visualizer = KenAll::Visualizer.new(opt[:visualize])
@@ -49,7 +49,7 @@ module KenAll
     def download_file(file)
       @visualizer.download_status do
         file.binmode
-        open(URI, 'rb') do |read_file|
+        URI.open(FILE_URI, 'rb') do |read_file|
           file.write(read_file.read)
         end
         file.rewind
